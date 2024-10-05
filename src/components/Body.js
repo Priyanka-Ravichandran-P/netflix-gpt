@@ -10,7 +10,7 @@ const Body = () => {
       element: <Login />,
     },
     {
-      path: "/movies",
+      path: "/browse",
       element: <Browse />,
     },
   ]);

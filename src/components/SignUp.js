@@ -47,7 +47,7 @@ const SignUp = () => {
     if (response.status === true) {
       await doListenUserSession();
       setErrorMessage("");
-      navigate("/movies");
+      navigate("/browse");
     } else {
       setErrorMessage(response.message);
     }
