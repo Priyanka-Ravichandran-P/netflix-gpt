@@ -1,13 +1,9 @@
-import React from 'react'
+import React from "react";
 
 const Loader = () => {
   return (
-    <div>
-        <div className='rounded bg-transparent'>
+    <div className="h-6 w-6 m-auto rounded-full bg-transparent border-red-400 border-2 border-dashed animate-spin"></div>
+  );
+};
 
-        </div>
-    </div>
-  )
-}
-
-export default Loader
+export default Loader;

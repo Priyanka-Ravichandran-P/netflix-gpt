@@ -11,6 +11,7 @@ import Loader from "./Loader";
 const SignUp = () => {
   const [isSignUP, setIsSignUp] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
+  const [isLoader, setLoader] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -53,6 +54,8 @@ const SignUp = () => {
   };
 
   const signUpUser = async (email, password) => {
+    setErrorMessage("");
+    setLoader(true);
     const response = await doSignUpUser(email, password);
     if (response.status === true) {
       setIsSignUp(false);
@@ -60,6 +63,7 @@ const SignUp = () => {
     } else {
       setErrorMessage(response.message);
     }
+    setLoader(false);
   };
 
   const doListenUserSession = async () => {
@@ -114,15 +118,21 @@ const SignUp = () => {
                 placeholder="Password"
               />
             </div>
-            <div className="p-4">
-              <button
-                type="submit"
-                onClick={validateForm}
-                className="bg-red-600 font-bold text-white w-full h-10 rounded-sm"
-              >
-                {isSignUP === false ? "Sign In" : "Sign Up"}
-              </button>
-            </div>
+            {isLoader === true ? (
+              <div className="p-4">
+                <Loader />
+              </div>
+            ) : (
+              <div className="p-4">
+                <button
+                  type="submit"
+                  onClick={validateForm}
+                  className="bg-red-600 font-bold text-white w-full h-10 rounded-sm"
+                >
+                  {isSignUP === false ? "Sign In" : "Sign Up"}
+                </button>
+              </div>
+            )}
             {errorMessage ? (
               <div className="p-4 w-full">
                 <span className=" text-start text-md text-red-500">
@@ -132,6 +142,7 @@ const SignUp = () => {
             ) : (
               <></>
             )}
+
             <div className="p-4 w-full">
               <span className=" text-start  text-white">
                 New to Netflix?{" "}
