@@ -1,14 +1,18 @@
 import React, { useRef, useState } from "react";
 import { isInputValid } from "../utils/validation";
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import { doSignUpUser, dosignInUser } from "../services/userService";
 import { auth } from "../utils/firebase-config";
+import { onAuthStateChanged } from "firebase/auth";
+import { useDispatch } from "react-redux";
+import { addUser, removeUser } from "../redux-utils/userSlice";
+import Loader from "./Loader";
 
 const SignUp = () => {
   const [isSignUP, setIsSignUp] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const nameRef = useRef(null);
   const emailRef = useRef(null);
@@ -37,36 +41,39 @@ const SignUp = () => {
     }
   };
 
-  const signInUser = (email, password) => {
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        setErrorMessage("");
-        const user = userCredential.user;
-        console.log(" user:: ", user);
-        
-        // ...
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        setErrorMessage(errorCode + " - " + errorMessage);
-      });
+  const signInUser = async (email, password) => {
+    const response = await dosignInUser(email, password);
+    if (response.status === true) {
+      await doListenUserSession();
+      setErrorMessage("");
+      navigate("/movies");
+    } else {
+      setErrorMessage(response.message);
+    }
   };
 
-  const signUpUser = (email, password) => {
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed up
-        setErrorMessage("");
-        const user = userCredential.user;
-        console.log(" user:: ", user);
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        setErrorMessage(errorCode + " - " + errorMessage);
-      });
+  const signUpUser = async (email, password) => {
+    const response = await doSignUpUser(email, password);
+    if (response.status === true) {
+      setIsSignUp(false);
+      setErrorMessage("");
+    } else {
+      setErrorMessage(response.message);
+    }
+  };
+
+  const doListenUserSession = async () => {
+    onAuthStateChanged(auth, (user) => {
+      // Event Listener
+      if (user) {
+        const { uid, email, displayName } = user;
+        console.log(" User Signed in  event : ", user);
+        dispatch(addUser({ uid, email, displayName }));
+      } else {
+        console.log(" User Signed out  event : ");
+        dispatch(removeUser());
+      }
+    });
   };
 
   return (
