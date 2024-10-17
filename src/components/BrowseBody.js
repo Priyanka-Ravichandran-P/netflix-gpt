@@ -1,12 +1,12 @@
-import React from "react";
-import HeadearUserDropDownMenu from "./HeadearUserDropDownMenu";
+import useWatchListMovies from "../hooks/WatchListHook";
+import Movies from "./Movies";
+
 
 const BrowseBody = () => {
-  return (
-    <div>
-      
-    </div>
-  );
+  const movies = useWatchListMovies();
+  return <div>
+    <Movies/>
+  </div>;
 };
 
 export default BrowseBody;
