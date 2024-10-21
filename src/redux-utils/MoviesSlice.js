@@ -2,10 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const movieSlice = createSlice({
   name: "watchlistMovies",
-  initialState: {
-    movies : []
-  },
-  reducers : {
+  initialState: [],
+  reducers: {
     addMovies: (state, action) => {
       return action.payload;
     },

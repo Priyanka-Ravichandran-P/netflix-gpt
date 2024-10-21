@@ -1,12 +1,11 @@
 import useWatchListMovies from "../hooks/WatchListHook";
-import Movies from "./Movies";
+import Movie from "./Movie";
+import PrimaryContainer from "./PrimaryContainer";
+import SecondaryContainer from "./SecondaryContainer";
 
 
 const BrowseBody = () => {
-  const movies = useWatchListMovies();
-  return <div>
-    <Movies/>
-  </div>;
+  
 };
 
 export default BrowseBody;
