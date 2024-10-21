@@ -1,27 +1,28 @@
 import React from "react";
 import Logo from "./Logo";
+import { PROFILE_PICTURE } from "../services/apiService";
 
 const Header = () => {
   return (
-    <div className="flex flex-row justify-between bg-slate-500 h-16">
+    <div className="absolute flex flex-row justify-between h-16">
       <div className="flex flex-row justify-between items-center">
         <div className="w-28 ml-8 mr-8">
           <Logo />
         </div>
         <nav className="flex flex-row text-white">
-          <div className="pl-2 pr-2"> Home </div>
-          <div className="pl-2 pr-2"> TV Shows </div>
-          <div className="pl-2 pr-2"> Movies </div>
-          <div className="pl-2 pr-2"> New & Popular </div>
-          <div className="pl-2 pr-2"> My List</div>
-          <div className="pl-2 pr-2"> Browse by Languages</div>
+          <div className="pl-2 pr-2 cursor-pointer"> Home </div>
+          <div className="pl-2 pr-2 cursor-pointer"> TV Shows </div>
+          <div className="pl-2 pr-2 cursor-pointer"> Movies </div>
+          <div className="pl-2 pr-2 cursor-pointer"> New & Popular </div>
+          <div className="pl-2 pr-2 cursor-pointer"> My List</div>
+          <div className="pl-2 pr-2 cursor-pointer"> Browse by Languages</div>
         </nav>
       </div>
 
       <div className="mr-10 flex flex-row items-center">
         <img
           className="h-8 w-8 rounded-md"
-          src="https://occ-0-1492-3663.1.nflxso.net/dnm/api/v6/vN7bi_My87NPKvsBoib006Llxzg/AAAABTZ2zlLdBVC05fsd2YQAR43J6vB1NAUBOOrxt7oaFATxMhtdzlNZ846H3D8TZzooe2-FT853YVYs8p001KVFYopWi4D4NXM.png?r=229"
+          src={PROFILE_PICTURE}
           alt=""
         />
         <span className="pl-2 pr-2 pt-4 pb-1">
