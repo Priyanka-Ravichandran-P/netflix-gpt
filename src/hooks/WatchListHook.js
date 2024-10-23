@@ -85,8 +85,8 @@ const useWatchListMovies = async () => {
         const MOVIE_VIDEO_API = `${MOVIE_VIDEOS_ENDPOINT}/${MOVIE_ID}/videos?api_key=${API_KEY}`;
         const response = await fetch(MOVIE_VIDEO_API, OPTIONS);
         const data = await response.json();
-        const trailerMovie = data?.results?.filter(obj => obj.type === "Teaser" && obj.site === "YouTube") || data?.results?.[0];
-        return trailerMovie.key;
+        const trailerMovie = data?.results?.filter(obj => obj.type === "Teaser") || data?.results?.[0];
+        return trailerMovie?.[0]?.key;
     } catch (error) {
       console.error(" Error: ", error);
     }

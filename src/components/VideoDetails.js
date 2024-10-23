@@ -4,7 +4,7 @@ import PlayButton from "./PlayButton";
 const VideoDetails = (props) => {
   const { title, description } = props?.data;
   return (
-    <div className="absolute top-40 z-50 h-40 w-1/4">
+    <div className="absolute top-40 z-50 h-40 w-1/3">
       <div className="m-8 p-2 rounded-sm">
         <label className="text-5xl font-bold text-white align-middle">{title}</label>
       </div>
