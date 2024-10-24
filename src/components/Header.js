@@ -15,7 +15,7 @@ const Header = () => {
                 border-l-transparent border-r-transparent `;
 
   return (
-    <div className="absolute z-50 flex flex-row justify-between h-16 w-full">
+    <div className="absolute z-50 pt-4 flex flex-row justify-between h-16 w-full text-white font-semibold bg-black">
       <div className="flex flex-row justify-between items-center">
         <div className="w-28 ml-8 mr-8">
           <Logo />
@@ -43,7 +43,7 @@ const Header = () => {
         </span>
       </div>
       {isHeaderDropDownOn ? (
-        <div className="absolute z-50 right-4 top-[4.2rem]">
+        <div className="absolute z-100 right-4 top-[4.2rem]">
           <HeadearUserDropDownMenu />
         </div>
       ) : null}
