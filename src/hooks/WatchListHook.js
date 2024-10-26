@@ -6,6 +6,8 @@ import {
   MOVIE_VIDEOS_ENDPOINT,
   API_KEY,
   IMAGE_FILE_PATH,
+  MOVIES_TOP_RATED_ENDPOINT,
+  MOVIES_POPULAR_ENDPOINT,
 } from "../services/apiService";
 import { useDispatch } from "react-redux";
 import { addMovies } from "../redux-utils/MoviesSlice";
@@ -38,13 +40,24 @@ const useWatchListMovies = async () => {
 
   const fetchMovies = async () => {
     try {
-      const response = await fetch(
-        `${MOVIES_WATCHLIST_ENDPOINT}?api_key=${API_KEY}`,
-        OPTIONS
-      );
-      let movies = await response.json();
+      const nowPlayingMoviesResponse = await fetch(`${MOVIES_WATCHLIST_ENDPOINT}?api_key=${API_KEY}`, OPTIONS);
+      const trendingMoviesResponse = await fetch(`${MOVIES_TOP_RATED_ENDPOINT}?api_key=${API_KEY}`, OPTIONS);
+      const popularMoviesResponse = await fetch(`${MOVIES_POPULAR_ENDPOINT}?api_key=${API_KEY}`, OPTIONS);
+      let nowPlayingMovies = await nowPlayingMoviesResponse.json();
+      let trendingMovies = await trendingMoviesResponse.json();
+      let popularMovies = await popularMoviesResponse.json();
+      nowPlayingMovies = await(addPropertyToMovies(nowPlayingMovies));
+      trendingMovies = await(addPropertyToMovies(trendingMovies));
+      popularMovies = await(addPropertyToMovies(popularMovies));
+      dispatch(addMovies({ nowPlayingMovies, trendingMovies,  popularMovies }));
+    } catch (error) {
+      console.error(" Error: ", error);
+    }
+  };
 
-      movies = movies?.results;
+  const addPropertyToMovies = async (movieList) => {
+    try {
+      const movies = movieList?.results;
       const listOfMovies = [];
       for (let i = 0; i < movies?.length; i++) {
         const movie = movies[i];
@@ -61,7 +74,7 @@ const useWatchListMovies = async () => {
         });
 
       }
-      dispatch(addMovies(listOfMovies));
+      return listOfMovies
     } catch (error) {
       console.error(" Error: ", error);
     }

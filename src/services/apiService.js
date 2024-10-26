@@ -13,6 +13,8 @@ export const OPTIONS = {
 }
 
 export const MOVIES_WATCHLIST_ENDPOINT = `${BASE_URL}/discover/movie?page=1`;
+export const MOVIES_POPULAR_ENDPOINT = `${BASE_URL}/movie/popular?page=4`;
+export const MOVIES_TOP_RATED_ENDPOINT = `${BASE_URL}/movie/upcoming?page=8`;
 export const TOP_RATED_MOVIES_WATCHLIST_ENDPOINT = `${BASE_URL}/movie/top_rated?page=1`;
 export const MOVIE_DETAILS_ENDPOINT = `${BASE_URL}/movie/`
 export const MOVIE_IMAGES_ENDPOINT = `${BASE_URL}/movie`
