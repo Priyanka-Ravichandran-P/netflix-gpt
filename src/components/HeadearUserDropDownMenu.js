@@ -5,7 +5,7 @@ const HeadearUserDropDownMenu = () => {
     <div className=" bg-black bg-opacity-75 border-black h-auto w-52 text-white text-sm font-semibold">
       <div>
         <ul>
-          <li className="p-2">
+          <li className="p-2 cursor-pointer">
             <div className="flex flex-row">
               <span className="pr-2">
                 <img className="rounded"
@@ -17,7 +17,7 @@ const HeadearUserDropDownMenu = () => {
               Children
             </div>
           </li>
-          <li className="p-2">
+          <li className="p-2 cursor-pointer">
             <div className="flex flex-row">
               <span className="pr-4 pl-1">
                 <svg
@@ -40,7 +40,7 @@ const HeadearUserDropDownMenu = () => {
               Account
             </div>
           </li>
-          <li className="p-2">
+          <li className="p-2 cursor-pointer">
             <div className="flex flex-row">
               <span className="pr-4 pl-1">
                 <svg
@@ -59,7 +59,7 @@ const HeadearUserDropDownMenu = () => {
               Transfer Profile
             </div>
           </li>
-          <li className="p-2">
+          <li className="p-2 cursor-pointer">
             <div className="flex flex-row">
               <span className="pr-4 pl-1">
                 <svg
@@ -81,7 +81,7 @@ const HeadearUserDropDownMenu = () => {
               Manage Profile
             </div>
           </li>
-          <li className="p-2">
+          <li className="p-2 cursor-pointer">
             <div className="flex flex-row">
               <span className="pr-4 pl-1">
                 <svg
@@ -100,7 +100,7 @@ const HeadearUserDropDownMenu = () => {
                   ></path>
                 </svg>
               </span>
-              Account
+              Help Centre
             </div>
           </li>
         </ul>

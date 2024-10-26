@@ -5,7 +5,7 @@ const VideoDetails = (props) => {
   const { title, description } = props?.data;
   return (
     // 
-    <div className="w-screen aspect-video absolute z-50 top-40 text-white">
+    <div className="w-1/2 aspect-video absolute z-50 top-40 text-white">
       <div className="m-8 p-2 rounded-sm w-[50ch]">
         <label className="text-5xl font-bold  align-middle">{title}</label>
       </div>

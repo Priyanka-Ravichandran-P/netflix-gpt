@@ -5,13 +5,12 @@ import PrimaryContainer from "./PrimaryContainer";
 import SecondaryContainer from "./SecondaryContainer";
 
 const Browse = () => {
+  useWatchListMovies();
 
-  const movies = useWatchListMovies();
-  
   return (
-    <div className="relative bg-slate-800 w-full h-full">
-      <PrimaryContainer/>
-      {/* <SecondaryContainer/> */}
+    <div className="relative w-full h-full">
+        <PrimaryContainer />
+        <SecondaryContainer />
     </div>
   );
 };

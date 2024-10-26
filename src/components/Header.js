@@ -15,7 +15,7 @@ const Header = () => {
                 border-l-transparent border-r-transparent `;
 
   return (
-    <div className="absolute z-50 pt-4 flex flex-row justify-between h-16 w-full text-white font-semibold bg-black">
+    <div className="absolute z-50 pt-4 flex flex-row justify-between h-16 w-screen text-white font-semibold bg-black">
       <div className="flex flex-row justify-between items-center">
         <div className="w-28 ml-8 mr-8">
           <Logo />
